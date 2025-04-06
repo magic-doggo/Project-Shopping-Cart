@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 const App = () => {
   return (
     <div>
-      <h1>Main Page of the app</h1>
-      <ul>
-        <li>
-          <Link to="Home"></Link>
-          <Link to="Shop"></Link>
-          <Link to="Cart"></Link>
-        </li>
-      </ul>
+      <header>
+        <h1>PokeShop</h1>
+        <nav>
+          <Link to=".">Home</Link>
+          <Link to="shop">Shop</Link>
+          <Link to="cart">Cart</Link>
+        </nav>
+      </header>
+      <h2>Tired of catching them all by yourself? PokeShop delivers all your pokemon straight to your doorstep!</h2>
     </div>
   )
 }
