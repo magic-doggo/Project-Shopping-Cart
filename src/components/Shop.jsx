@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Card from "./Card";
 
 const Shop = () => {
     const [shopItems, setShopItems] = useState([]);
@@ -39,9 +40,7 @@ const Shop = () => {
             <h2>Shop Page</h2>
             <div>
                 {shopItems.map((item)=>
-                <div>
-                    <div>{item.name}</div>
-                </div>
+                <Card key={item.pokeIndex} imageURL={item.icon} price={item.price} name={item.name}></Card>
                 )}
             </div>
         </div>
