@@ -1,25 +1,30 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "./Card";
+import ShoppingCartIcon from "./ShoppingCartIcon";
+import React, { Component } from 'react';
 
 const Shop = () => {
     const [shopItems, setShopItems] = useState([]);
     //read lesson api lesson examples again again
-    
+    const [nrOfItemsInBasket, setNrOfItemsInBasket] = useState(0);
+
     function addToCart(id) {
         setShopItems(shopItems.map(item => {
             if (item.pokeIndex === id) {
-                return {...item, nrOfCopiesInShoppingCart: item.nrOfCopiesInShoppingCart+1}
+                setNrOfItemsInBasket(nrOfItemsInBasket + 1)
+                return { ...item, nrOfCopiesInShoppingCart: item.nrOfCopiesInShoppingCart + 1 }
             } else return item;
         }))
     }
     function removeFromCart(id) {
         setShopItems(shopItems.map(item => {
             if (item.pokeIndex === id) {
-                if ((item.nrOfCopiesInShoppingCart-1) < 0) {
-                return {...item, nrOfCopiesInShoppingCart: 0}
+                setNrOfItemsInBasket(nrOfItemsInBasket - 1)
+                if ((item.nrOfCopiesInShoppingCart - 1) < 0) {
+                    return { ...item, nrOfCopiesInShoppingCart: 0 }
                 }
-                else return {...item, nrOfCopiesInShoppingCart: item.nrOfCopiesInShoppingCart-1}
+                else return { ...item, nrOfCopiesInShoppingCart: item.nrOfCopiesInShoppingCart - 1 }
             } else return item;
         }))
     }
@@ -36,9 +41,11 @@ const Shop = () => {
                     throw new Error(`Error fetching data for pokemon index ${tempIndex}`)
                 }
                 const shopItemsData = await response.json();
-                let pokemonShopItemObject = { name: shopItemsData.forms[0].name, icon: shopItemsData.sprites.front_default, pokeIndex: tempIndex, 
-                    price: shopItemsData.stats[0].base_stat, nrOfCopiesInShoppingCart: 0}
-                    //should i track items in shopping cart inside each item? or have a separate state that they get added to?
+                let pokemonShopItemObject = {
+                    name: shopItemsData.forms[0].name, icon: shopItemsData.sprites.front_default, pokeIndex: tempIndex,
+                    price: shopItemsData.stats[0].base_stat, nrOfCopiesInShoppingCart: 0
+                }
+                //should i track items in shopping cart inside each item? or have a separate state that they get added to?
                 tempShopItems.push(pokemonShopItemObject);
             }
             setShopItems(tempShopItems)
@@ -55,13 +62,14 @@ const Shop = () => {
                     <Link to="/">Home</Link>
                     <Link to="/shop">Shop</Link>
                     <Link to="/cart">Cart</Link>
+                    <ShoppingCartIcon nrOfItemsInBasket={nrOfItemsInBasket}></ShoppingCartIcon>
                 </nav>
             </header>
             <h2>Shop Page</h2>
             <div>
-                {shopItems.map((item)=>
-                <Card key={item.pokeIndex} imageURL={item.icon} price={item.price} name={item.name} id={item.pokeIndex}
-                nrOfCopiesInShoppingCart={item.nrOfCopiesInShoppingCart} addToCart={addToCart} removeFromCart={removeFromCart}></Card>
+                {shopItems.map((item) =>
+                    <Card key={item.pokeIndex} imageURL={item.icon} price={item.price} name={item.name} id={item.pokeIndex}
+                        nrOfCopiesInShoppingCart={item.nrOfCopiesInShoppingCart} addToCart={addToCart} removeFromCart={removeFromCart}></Card>
                 )}
             </div>
         </div>
@@ -83,3 +91,5 @@ export default Shop;
 
 //OPTIONAL
 //buttons on bottom to scroll to a new page of new items. 12ish items on page, 100 possible pages?
+
+//gotta buy em all
