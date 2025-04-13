@@ -1,16 +1,16 @@
 import Icon from '@mdi/react';
 import {mdiCartOutline } from '@mdi/js';
 
-export default function ShoppingCartIcon({nrOfItemsInBasket}) {
+export default function ShoppingCartIcon({nrOfItemsInBasket, priceOfItemsInBasket}) {
     return (
         <div>
-            {/* <img src="null" alt="" /> */}
             <Icon path={mdiCartOutline}
                 title="User Profile"
-                size={1}
+                size={2}
                 color="red"
             />
             <div>{nrOfItemsInBasket}</div>
+            <div>{priceOfItemsInBasket}$</div>
         </div>
     )
 }

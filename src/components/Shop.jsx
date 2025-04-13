@@ -8,11 +8,13 @@ const Shop = () => {
     const [shopItems, setShopItems] = useState([]);
     //read lesson api lesson examples again again
     const [nrOfItemsInBasket, setNrOfItemsInBasket] = useState(0);
+    const [priceOfItemsInBasket, setPriceOfItemsInBasket] = useState(0);
 
     function addToCart(id) {
         setShopItems(shopItems.map(item => {
             if (item.pokeIndex === id) {
-                setNrOfItemsInBasket(nrOfItemsInBasket + 1)
+                setNrOfItemsInBasket(nrOfItemsInBasket + 1);
+                setPriceOfItemsInBasket(priceOfItemsInBasket + item.price);
                 return { ...item, nrOfCopiesInShoppingCart: item.nrOfCopiesInShoppingCart + 1 }
             } else return item;
         }))
@@ -20,7 +22,8 @@ const Shop = () => {
     function removeFromCart(id) {
         setShopItems(shopItems.map(item => {
             if (item.pokeIndex === id) {
-                setNrOfItemsInBasket(nrOfItemsInBasket - 1)
+                setNrOfItemsInBasket(nrOfItemsInBasket - 1);
+                setPriceOfItemsInBasket(priceOfItemsInBasket - item.price);
                 if ((item.nrOfCopiesInShoppingCart - 1) < 0) {
                     return { ...item, nrOfCopiesInShoppingCart: 0 }
                 }
@@ -62,7 +65,7 @@ const Shop = () => {
                     <Link to="/">Home</Link>
                     <Link to="/shop">Shop</Link>
                     <Link to="/cart">Cart</Link>
-                    <ShoppingCartIcon nrOfItemsInBasket={nrOfItemsInBasket}></ShoppingCartIcon>
+                    <ShoppingCartIcon nrOfItemsInBasket={nrOfItemsInBasket} priceOfItemsInBasket={priceOfItemsInBasket}></ShoppingCartIcon>
                 </nav>
             </header>
             <h2>Shop Page</h2>
