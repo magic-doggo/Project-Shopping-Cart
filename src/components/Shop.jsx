@@ -7,14 +7,23 @@ const Shop = () => {
     //read lesson api lesson examples again again
     
     function addToCart(id) {
-
         setShopItems(shopItems.map(item => {
             if (item.pokeIndex === id) {
                 return {...item, nrOfCopiesInShoppingCart: item.nrOfCopiesInShoppingCart+1}
             } else return item;
         }))
-        // console.log(pokeItem.pokeIndex)
     }
+    function removeFromCart(id) {
+        setShopItems(shopItems.map(item => {
+            if (item.pokeIndex === id) {
+                if ((item.nrOfCopiesInShoppingCart-1) < 0) {
+                return {...item, nrOfCopiesInShoppingCart: 0}
+                }
+                else return {...item, nrOfCopiesInShoppingCart: item.nrOfCopiesInShoppingCart-1}
+            } else return item;
+        }))
+    }
+
 
     useEffect(() => {
         async function getPokemonForSale(nrOfPokemon) {
@@ -52,7 +61,7 @@ const Shop = () => {
             <div>
                 {shopItems.map((item)=>
                 <Card key={item.pokeIndex} imageURL={item.icon} price={item.price} name={item.name} id={item.pokeIndex}
-                nrOfCopiesInShoppingCart={item.nrOfCopiesInShoppingCart} addToCart={addToCart}></Card>
+                nrOfCopiesInShoppingCart={item.nrOfCopiesInShoppingCart} addToCart={addToCart} removeFromCart={removeFromCart}></Card>
                 )}
             </div>
         </div>
