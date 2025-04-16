@@ -7,17 +7,27 @@ import Shop from "./components/Shop";
 const routes = [
     {
         path: "/",
-        element: <App/>,
-        errorElement: <ErrorPage/>
+        element: <App />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: "cart",
+                element: <Cart />
+            },
+            {
+                path: "shop",
+                element: <Shop />
+            }
+        ]
     },
-    {
-        path: "cart",
-        element: <Cart/>
-    },
-    {
-        path: "shop",
-        element: <Shop/>
-    }
+    // {
+    //     path: "cart",
+    //     element: <Cart/>
+    // },
+    // {
+    //     path: "shop",
+    //     element: <Shop/>
+    // }
 ]
 
 export default routes;

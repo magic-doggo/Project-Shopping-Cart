@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import ShoppingCartIcon from "./ShoppingCartIcon";
 import React, { Component } from 'react';
+import { useOutletContext } from "react-router-dom";
 
-const Shop = () => {
-    const [shopItems, setShopItems] = useState([]);
+// const Shop = ({shopItems, setShopItems, nrOfItemsInBasket, setNrOfItemsInBasket, priceOfItemsInBasket, setPriceOfItemsInBasket}) => {
+    const Shop = () => {
+    // const [shopItems, setShopItems] = useState([]);
     //read lesson api lesson examples again again
-    const [nrOfItemsInBasket, setNrOfItemsInBasket] = useState(0);
-    const [priceOfItemsInBasket, setPriceOfItemsInBasket] = useState(0);
-
+    // const [nrOfItemsInBasket, setNrOfItemsInBasket] = useState(0);
+    // const [priceOfItemsInBasket, setPriceOfItemsInBasket] = useState(0);
+    const { shopItems, setShopItems, nrOfItemsInBasket, setNrOfItemsInBasket, priceOfItemsInBasket, setPriceOfItemsInBasket } = useOutletContext();
     function addToCart(id) {
         setShopItems(shopItems.map(item => {
             if (item.pokeIndex === id) {
@@ -65,12 +67,11 @@ const Shop = () => {
                     <Link to="/">Home</Link>
                     <Link to="/shop">Shop</Link>
                     <Link to="/cart">Cart</Link>
-                    <ShoppingCartIcon nrOfItemsInBasket={nrOfItemsInBasket} priceOfItemsInBasket={priceOfItemsInBasket}></ShoppingCartIcon>
                 </nav>
             </header>
             <h2>Shop Page</h2>
             <div>
-                {shopItems.map((item) =>
+                {shopItems && shopItems.map((item) =>
                     <Card key={item.pokeIndex} imageURL={item.icon} price={item.price} name={item.name} id={item.pokeIndex}
                         nrOfCopiesInShoppingCart={item.nrOfCopiesInShoppingCart} addToCart={addToCart} removeFromCart={removeFromCart}></Card>
                 )}
@@ -89,6 +90,10 @@ export default Shop;
 //for individual cards/items, do like rimi: image on top, name underneath, price underneath.
 //under that, a wide button "add to cart". when clicked, show number in middle, - and + button on sides
 
+//useParams() if planning to make subpages for items https://www.theodinproject.com/lessons/node-path-react-new-react-router
+
+//min 11, shomehow pass data through router? not possible to pass data back to parents? https://www.youtube.com/watch?v=J6-Iw0cJYJk
+//read router doc again <Route path="/" element={<ShopPage items={items} addItemToCart={addItemToCart} />} />
 
 
 
