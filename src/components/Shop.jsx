@@ -66,3 +66,5 @@ export default Shop;
 
 //OPTIONAL
 //buttons on bottom to scroll to a new page of new items. 12ish items on page, 100 possible pages?
+//footer page, shared between all components
+//pokemon text font for header

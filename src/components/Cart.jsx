@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import Card from "./Card";
 
 const Cart = () => {
-    const { addToCart, removeFromCart, shopItems } = useOutletContext();
+    const { addToCart, removeFromCart, shopItems, priceOfItemsInBasket } = useOutletContext();
 
     return (
         <div>
@@ -18,6 +18,10 @@ const Cart = () => {
                 return null;
             }
                 )}
+            </div>
+            <div>
+                <div>Total: {priceOfItemsInBasket}$</div>
+                <button>Pay</button>
             </div>
         </div>
     )

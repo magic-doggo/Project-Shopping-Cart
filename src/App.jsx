@@ -33,7 +33,7 @@ const App = () => {
         <h1>PokeShop</h1>
         <h2>Gotta Buy 'Em All!</h2>
         <nav>
-          <Link to=".">Home</Link>
+          <Link to="home">Home</Link>
           <Link to="shop">Shop</Link>
           <Link to="cart">Cart</Link>
         </nav>
