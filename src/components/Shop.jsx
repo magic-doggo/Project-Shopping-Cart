@@ -30,3 +30,5 @@ export default Shop;
 //pokemon text font for header
 //FIX changeNrOfItemsFromCart and add/remove to calculate price directly from state? check if it loses too much performance?
 //maybe new state containing only items in basket, and iterate over items there to see price/quantity of items in basket
+//form validation, max 99 items per product. for more, message to contact sales
+//move fetch func to its own file

@@ -3,6 +3,9 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import ShoppingCartIcon from "./components/ShoppingCartIcon";
+import pokeShopImage from './assets/pokeShop.png';
+import styles from './styles/App.module.css'
+
 const App = () => {
   const [shopItems, setShopItems] = useState([]);
   const [nrOfItemsInBasket, setNrOfItemsInBasket] = useState(0);
@@ -33,9 +36,9 @@ const App = () => {
       if (item.pokeIndex === id) {
         //i should just iterate over the cart items to count instead of this hack?
         let differenceInCopiesOfThisItemInCart = nrOfCopiesToBeInCart - item.nrOfCopiesInShoppingCart;
-        setNrOfItemsInBasket(nrOfItemsInBasket + (differenceInCopiesOfThisItemInCart)); 
+        setNrOfItemsInBasket(nrOfItemsInBasket + (differenceInCopiesOfThisItemInCart));
         setPriceOfItemsInBasket(priceOfItemsInBasket + (item.price * (nrOfCopiesToBeInCart - item.nrOfCopiesInShoppingCart)));
-        if ((nrOfCopiesToBeInCart ) < 0) { //should not need this if i add form validation against negative nrs?
+        if ((nrOfCopiesToBeInCart) < 0) { //should not need this if i add form validation against negative nrs?
           return { ...item, nrOfCopiesInShoppingCart: 0 }
         }
         else return { ...item, nrOfCopiesInShoppingCart: nrOfCopiesToBeInCart }
@@ -69,16 +72,18 @@ const App = () => {
 
   return (
     <div>
-      <header>
-        <h1>PokeShop</h1>
-        <h2>Gotta Buy 'Em All!</h2>
+      <header className={styles.header}>
+        <div className={styles.logoAndMotto}>
+          <h1><img src={pokeShopImage} className={styles.logo} alt="pokeShop logo using pokemon font" /></h1>
+          <h2 className={styles.motto}>Gotta Buy 'Em All!</h2>
+        </div>
         <nav>
           <Link to="home">Home</Link>
           <Link to="shop">Shop</Link>
           <Link to="cart"><ShoppingCartIcon nrOfItemsInBasket={nrOfItemsInBasket} priceOfItemsInBasket={priceOfItemsInBasket}></ShoppingCartIcon></Link>
         </nav>
       </header>
-      <Outlet context={{ addToCart, removeFromCart, shopItems, setShopItems, nrOfItemsInBasket, setNrOfItemsInBasket, priceOfItemsInBasket, setPriceOfItemsInBasket, changeNrOfItemsFromCart}} />
+      <Outlet context={{ addToCart, removeFromCart, shopItems, setShopItems, nrOfItemsInBasket, setNrOfItemsInBasket, priceOfItemsInBasket, setPriceOfItemsInBasket, changeNrOfItemsFromCart }} />
     </div>
   )
 }

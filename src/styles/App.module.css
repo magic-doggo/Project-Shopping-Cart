@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'Andy Bold';
+    src: local('ANDYB'), url(../assets/ANDYB.TTF) format('truetype');
+  }
+
+.logo {
+    /* background-color: green; */
+}
+
+.motto {
+  font-family: 'Andy Bold', Arial, serif;
+}
+
+.header {
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+}
