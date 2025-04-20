@@ -1,14 +1,15 @@
 import Card from "./Card";
 import React, { Component } from 'react';
 import { useOutletContext, Outlet } from "react-router-dom";
+import styles from '../styles/Shop.module.css';
 
     const Shop = () => {   
     const { addToCart, removeFromCart, shopItems, changeNrOfItemsFromCart} = useOutletContext();
     return (
 
-        <div>
+        <div className={styles.container}>
             <h3>Shop Page</h3>
-            <div>
+            <div className={styles.cardsContainer}>
                 {shopItems && shopItems.map((item) =>
                     <Card key={item.pokeIndex} imageURL={item.icon} price={item.price} name={item.name} id={item.pokeIndex}
                         nrOfCopiesInShoppingCart={item.nrOfCopiesInShoppingCart} addToCart={addToCart} removeFromCart={removeFromCart} changeNrOfItemsFromCart={changeNrOfItemsFromCart}></Card>

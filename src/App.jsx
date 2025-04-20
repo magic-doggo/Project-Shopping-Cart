@@ -67,7 +67,7 @@ const App = () => {
       console.log("called api");
       setShopItems(tempShopItems);
     }
-    getPokemonForSale(2);
+    getPokemonForSale(12);
   }, [])
 
   return (
@@ -89,3 +89,5 @@ const App = () => {
 }
 
 export default App;
+
+//optional: image hover overlay. show pokemon evolution on homepage?

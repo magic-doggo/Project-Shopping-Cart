@@ -1,0 +1,33 @@
+.container {
+    border: 2px solid #FFD700;
+    padding: 6px;
+    max-width: 35%;
+    min-width: 17%;
+    text-align: center;
+}
+
+.container > * {
+    color: black;
+}
+
+button {
+    background-color: #FFD700;
+}
+
+.addToCart {
+    padding: 5px;
+}
+
+input {
+    width: 36px;
+    text-align: center;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+img {
+    min-width: 80px;
+}

@@ -1,0 +1,15 @@
+.container {
+    margin: 14px 28px;
+    color: #00bfff;
+}
+
+.cardsContainer {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+h3 {
+    font-size: 40px;
+    font-weight: 700;
+}
