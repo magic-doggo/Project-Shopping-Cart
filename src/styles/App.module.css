@@ -4,7 +4,7 @@
   }
 
 .logo {
-    /* background-color: green; */
+  max-width: 200px;
 }
 
 .motto {
@@ -14,9 +14,26 @@
 .header {
   display: flex;
   border-bottom: 1px solid black;
+  justify-content: space-between;
 }
 
 nav {
   display: flex;
-  gap: 10px;
+  gap: 60px;
+  font-size: 24px;
+  text-align: center;
+  width: max-content;
+  align-items: center;
+}
+
+nav > a {
+  text-decoration: none;
+}
+
+h1, h2 {
+  margin: 0;
+}
+
+header > * {
+  margin: 14px 28px;
 }

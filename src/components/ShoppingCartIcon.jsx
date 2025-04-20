@@ -1,16 +1,23 @@
 import Icon from '@mdi/react';
-import {mdiCartOutline } from '@mdi/js';
+import { mdiCartOutline, mdiCircle, mdiPanoramaWideAngle } from '@mdi/js';
+import styles from '../styles/ShoppingCartIcon.module.css'
 
-export default function ShoppingCartIcon({nrOfItemsInBasket, priceOfItemsInBasket}) {
+
+export default function ShoppingCartIcon({ nrOfItemsInBasket, priceOfItemsInBasket }) {
     return (
-        <div>
+        <div className={styles.container}>
             <Icon path={mdiCartOutline}
-                title="User Profile"
-                size={2}
+                title="CartOutline"
+                size={1.8}
                 color="red"
             />
-            <div>{nrOfItemsInBasket}</div>
             <div>{priceOfItemsInBasket}$</div>
+            <Icon path={mdiPanoramaWideAngle}
+                title="Circle"
+                size={1.6}
+                className={styles.circle}
+            ></Icon>
+            <div className={styles.nrOfItemsInBasket}>{nrOfItemsInBasket}</div>
         </div>
     )
 }
