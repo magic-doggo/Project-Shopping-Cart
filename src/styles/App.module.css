@@ -29,6 +29,9 @@ nav {
 nav > a {
   text-decoration: none;
   color: #00bfff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 h1, h2 {
@@ -38,3 +41,9 @@ h1, h2 {
 header > * {
   margin: 14px 28px;
 }
+
+nav a:hover, nav a.active {
+  background-color: #FFD700; 
+  color: #00008B;
+  font-weight: bold;
+  }

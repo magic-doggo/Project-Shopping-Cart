@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import ShoppingCartIcon from "./components/ShoppingCartIcon";
 import pokeShopImage from './assets/pokeShop.png';
 import styles from './styles/App.module.css'
+import { NavLink } from "react-router-dom";
+
 
 const App = () => {
   const [shopItems, setShopItems] = useState([]);
@@ -78,9 +80,12 @@ const App = () => {
           <h2 className={styles.motto}>Gotta Buy 'Em All!</h2>
         </div>
         <nav>
-          <Link to="home">Home</Link>
-          <Link to="shop">Shop</Link>
-          <Link to="cart"><ShoppingCartIcon nrOfItemsInBasket={nrOfItemsInBasket} priceOfItemsInBasket={priceOfItemsInBasket}></ShoppingCartIcon></Link>
+          {/* <Link to="home">Home</Link> */}
+          <NavLink to="home" className={({isActive}) => isActive ? styles.active : ""}>Home</NavLink>
+          <NavLink to="shop" className={({isActive}) => isActive ? styles.active : ""}>Shop</NavLink>
+          <NavLink to="cart" className={({isActive}) => isActive ? styles.active : ""}>
+          <ShoppingCartIcon nrOfItemsInBasket={nrOfItemsInBasket} priceOfItemsInBasket={priceOfItemsInBasket}></ShoppingCartIcon>
+          </NavLink>
         </nav>
       </header>
       <Outlet context={{ addToCart, removeFromCart, shopItems, setShopItems, nrOfItemsInBasket, setNrOfItemsInBasket, priceOfItemsInBasket, setPriceOfItemsInBasket, changeNrOfItemsFromCart }} />
@@ -90,4 +95,6 @@ const App = () => {
 
 export default App;
 
+// https://reactrouter.com/6.28.0/components/nav-link
 //optional: image hover overlay. show pokemon evolution on homepage?
+//change pokemon image to gif on hover?
