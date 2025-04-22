@@ -54,17 +54,21 @@ const App = () => {
       //to show pokemon starting from nrOfPokemon x nr of page
       let tempShopItems = [];
       for (let tempIndex = 1; tempIndex < (nrOfPokemon + 1); tempIndex++) {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${tempIndex}`);
-        if (!response.ok) {
-          throw new Error(`Error fetching data for pokemon index ${tempIndex}`)
+        try {
+          const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${tempIndex}`);
+          if (!response.ok) {
+            throw new Error(`Error fetching data for pokemon index ${tempIndex}`)
+          }
+          const shopItemsData = await response.json();
+          let pokemonShopItemObject = {
+            name: shopItemsData.forms[0].name, icon: shopItemsData.sprites.front_default, pokeIndex: tempIndex,
+            price: shopItemsData.stats[0].base_stat, nrOfCopiesInShoppingCart: 0
+          }
+          //should i track items in shopping cart inside each item? or have a separate state that they get added to?
+          tempShopItems.push(pokemonShopItemObject);
+        } catch (error) {
+          console.error(error)
         }
-        const shopItemsData = await response.json();
-        let pokemonShopItemObject = {
-          name: shopItemsData.forms[0].name, icon: shopItemsData.sprites.front_default, pokeIndex: tempIndex,
-          price: shopItemsData.stats[0].base_stat, nrOfCopiesInShoppingCart: 0
-        }
-        //should i track items in shopping cart inside each item? or have a separate state that they get added to?
-        tempShopItems.push(pokemonShopItemObject);
       }
       console.log("called api");
       setShopItems(tempShopItems);
