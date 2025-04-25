@@ -8,7 +8,7 @@ import styles from '../styles/Shop.module.css';
     return (
 
         <div className={styles.container}>
-            <h3>Shop Page</h3>
+            <h3 className={styles.shopH3}>Shop Page</h3>
             <div className={styles.cardsContainer}>
                 {shopItems && shopItems.map((item) =>
                     <Card key={item.pokeIndex} imageURL={item.icon} price={item.price} name={item.name} id={item.pokeIndex}

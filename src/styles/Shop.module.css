@@ -1,6 +1,6 @@
 .container {
     margin: 14px 28px;
-    color: #00bfff;
+    /* color: #00bfff; */
 }
 
 .cardsContainer {
@@ -9,7 +9,11 @@
     flex-wrap: wrap;
 }
 
-h3 {
+/* h3 {
     font-size: 40px;
     font-weight: 700;
+} */
+
+.shopH3 {
+    margin: 20px 0;
 }

@@ -25,3 +25,8 @@ h3 {
     font-size: 26px;
     /* color: #00bfff; */
 }
+
+.homeH4 {
+    margin-top: 10px;
+    font-weight: 500;
+}
