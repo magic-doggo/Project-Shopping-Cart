@@ -4,7 +4,9 @@
 }
 
 .imgContainer {
-    min-width: 30%;
+    /* min-width: 25%;
+    max-width: 30%; */
+    flex: 0 1 20%;
 }
 
 .container {
@@ -15,6 +17,7 @@
 .imgListContainer{
     display: flex;
     flex-wrap: wrap;
+    cursor: url(../assets/32px-Poké_Ball_icon.svg.png), auto;
 }
 
 h3 {

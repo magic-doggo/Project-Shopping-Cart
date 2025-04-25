@@ -62,7 +62,7 @@ const App = () => {
           const shopItemsData = await response.json();
           let pokemonShopItemObject = {
             name: shopItemsData.forms[0].name, icon: shopItemsData.sprites.front_default, pokeIndex: tempIndex,
-            price: shopItemsData.stats[0].base_stat, nrOfCopiesInShoppingCart: 0, gif: shopItemsData["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_shiny"]
+            price: shopItemsData.stats[0].base_stat, nrOfCopiesInShoppingCart: 0, gif: shopItemsData["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
           }
           console.log(pokemonShopItemObject.gif)
           //should i track items in shopping cart inside each item? or have a separate state that they get added to?

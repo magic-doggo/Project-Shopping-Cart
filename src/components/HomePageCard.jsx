@@ -7,7 +7,9 @@ export default function HomePageCard({ shopItem }) {
         <div className={styles.imgContainer}>
             {isGifShown ?
                 (<img src={shopItem.gif} alt="" onMouseLeave={() => {
-                    setIsGifShown(false)}} className={styles.gif} />) :
+                    setTimeout(() => {
+                        setIsGifShown(false);
+                      }, 1000);}} className={styles.gif} />) :
                 (<img src={shopItem.icon} alt="" onMouseEnter={() => {
                     setIsGifShown(true)}} className={styles.icon}/>)}
         </div>
