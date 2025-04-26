@@ -22,7 +22,7 @@ export default function ShoppingCartIcon({ nrOfItemsInBasket, priceOfItemsInBask
     )
 }
 
-ShoppingCartIcon.PropTypes = {
-    nrOfItemsInBasket: PropTypes.number,
-    priceOfItemsInBasket: PropTypes.number
-}
+// ShoppingCartIcon.PropTypes = {
+//     nrOfItemsInBasket: PropTypes.number,
+//     priceOfItemsInBasket: PropTypes.number
+// }

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import styles from '../styles/Home.module.css'
-import PropTypes from "prop-types";
+import propTypes from "prop-types";
 
 export default function HomePageCard({ shopItem }) {
     const [isGifShown, setIsGifShown] = useState(false);
@@ -17,6 +17,6 @@ export default function HomePageCard({ shopItem }) {
     )
 }
 
-HomePageCard.PropTypes = {
-    shopItem: PropTypes.object
+HomePageCard.propTypes = {
+    shopItem: propTypes.object
 }

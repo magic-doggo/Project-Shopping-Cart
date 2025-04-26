@@ -24,7 +24,7 @@ export default function Card({ imageURL, name, price, nrOfCopiesInShoppingCart, 
     )
 }
 
-Card.PropTypes = {
+Card.propTypes = {
     imageURL: string,
     name: string,
     price: number,
