@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
-import { mdiCartOutline, mdiCircle, mdiPanoramaWideAngle } from '@mdi/js';
+import { mdiCartOutline, mdiPanoramaWideAngle } from '@mdi/js';
 import styles from '../styles/ShoppingCartIcon.module.css'
-
+import PropTypes from 'prop-types';
 
 export default function ShoppingCartIcon({ nrOfItemsInBasket, priceOfItemsInBasket }) {
     return (
@@ -20,4 +20,9 @@ export default function ShoppingCartIcon({ nrOfItemsInBasket, priceOfItemsInBask
             <div className={styles.nrOfItemsInBasket}>{nrOfItemsInBasket}</div>
         </div>
     )
+}
+
+ShoppingCartIcon.PropTypes = {
+    nrOfItemsInBasket: PropTypes.number,
+    priceOfItemsInBasket: PropTypes.number
 }

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import styles from '../styles/Card.module.css';
+import { func, number, string } from "prop-types";
 
 
 export default function Card({ imageURL, name, price, nrOfCopiesInShoppingCart, id, addToCart, removeFromCart, changeNrOfItemsFromCart}) {
@@ -21,4 +22,15 @@ export default function Card({ imageURL, name, price, nrOfCopiesInShoppingCart, 
                 (<button className={styles.addToCart} onClick={() => (addToCart(id), setDesiredNrOfCopiesInCart(parseInt(nrOfCopiesInShoppingCart) + 1))}>Add to Cart</button>)}
         </div>
     )
+}
+
+Card.PropTypes = {
+    imageURL: string,
+    name: string,
+    price: number,
+    nrOfCopiesInShoppingCart: number,
+    id: number,
+    addToCart: func,
+    removeFromCart: func,
+    changeNrOfItemsFromCart: func,
 }
