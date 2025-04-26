@@ -14,7 +14,7 @@ export default function Card({ imageURL, name, price, nrOfCopiesInShoppingCart, 
                 (<div>
                     <button onClick={() => {removeFromCart(id), setDesiredNrOfCopiesInCart(nrOfCopiesInShoppingCart - 1)}}>-</button>
                 {/* maybe do real time updates instead of blur? make sure only to update on a positive number */}
-                    <input type="number" value={desiredNrOfCopiesInCart} onChange={(e) => setDesiredNrOfCopiesInCart(e.target.value)} onBlur={() => changeNrOfItemsFromCart(id, desiredNrOfCopiesInCart)}/>
+                    <input className={styles.nrOfCopiesInCart} type="number" value={desiredNrOfCopiesInCart} onChange={(e) => setDesiredNrOfCopiesInCart(e.target.value)} onBlur={() => changeNrOfItemsFromCart(id, desiredNrOfCopiesInCart)}/>
                     <button onClick={() => {addToCart(id), setDesiredNrOfCopiesInCart(parseInt(nrOfCopiesInShoppingCart) + 1)}} >+</button>
                     {/* {(nrOfCopiesInShoppingCart != desiredNrOfCopiesInCart) ?
                     (<button onClick={() => changeNrOfItemsFromCart(id, desiredNrOfCopiesInCart)}>Save Changes to Cart</button>) : null} */}
