@@ -100,6 +100,10 @@ const App = () => {
 
 export default App;
 
-// https://reactrouter.com/6.28.0/components/nav-link
-//optional: image hover overlay. show pokemon evolution on homepage?
-//change pokemon image to gif on hover?
+
+
+// Once a user has submitted their order, the amount on the cart itself should adjust accordingly.
+// Clear out any missing in props validation errors in your app!
+// Make sure to test your app thoroughly using the React Testing Library. Be careful not to test react-router-dom directly, since it is an external library and the developers working on it must have tested the library already.
+// As usual, style your application so you can show it off! You have a host of options provided already.
+// Lastly, it’s time to deploy it! Depending on what hosting solution you’re using, you may need some additional configuration so that your routing is handled correctly as a single page application (SPA).

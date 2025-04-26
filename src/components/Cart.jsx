@@ -4,7 +4,18 @@ import Card from "./Card";
 import styles from '../styles/Cart.module.css'
 
 const Cart = () => {
-    const { addToCart, removeFromCart, shopItems, priceOfItemsInBasket, changeNrOfItemsFromCart } = useOutletContext();
+    const { addToCart, removeFromCart, shopItems, setShopItems, priceOfItemsInBasket, setPriceOfItemsInBasket, changeNrOfItemsFromCart, setNrOfItemsInBasket } = useOutletContext();
+    function emptyCart() {
+        setShopItems(shopItems.map(item => {
+            if (item.nrOfCopiesInShoppingCart > 0) {
+                return {...item, nrOfCopiesInShoppingCart: 0}
+            }
+            return item;
+        }
+    ))
+    setNrOfItemsInBasket(0);
+    setPriceOfItemsInBasket(0);
+    }
 
     return (
         <div className={styles.cartContainer}>
@@ -24,7 +35,7 @@ const Cart = () => {
                 <div>
                     <div className={styles.payOptions}>
                         <div>Total: {priceOfItemsInBasket}$</div>
-                        <button className={styles.payButton}>Pay</button>
+                        <button className={styles.payButton} onClick={() => emptyCart()}>Pay</button>
                     </div>
                     <br />
                     <div>Insert Coupons:</div>
