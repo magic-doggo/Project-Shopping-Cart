@@ -40,27 +40,37 @@ describe("Card Component", () => {
 
     });
 
-    // it("should call the addToCart function when 'Add to Cart' button is clicked and add value to desiredNrOfCopies in state", async () => {
-    //     const addToCart = vi.fn();
-    //     const user = userEvent.setup();
-    //     render(<BrowserRouter>
-    //         <Card
-    //             imageURL="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
-    //             name="bulbasaur"
-    //             price={45}
-    //             nrOfCopiesInShoppingCart={0}
-    //             id={1}
-    //             addToCart={addToCart}
-    //         />
-    //     </BrowserRouter>)
-    //     const button = screen.getByRole("button", { name: "Add to Cart" });
-    //     waitForElementToBeRemoved(screen.getByRole("button", { name: "Add to Cart" })).then(() =>   console.log('Element no longer in DOM'),)
-    //     await user.click(button);
-    //     expect(addToCart).toHaveBeenCalled();
-
-    //     await waitFor(() => expect(screen.findByRole('spinbutton')).toHaveValue(1))
-    //     //why not finding spinbuttonm regardless of whether i use waitforelementtoberemoved
-    // });
+    it("should call the addToCart function when 'Add to Cart' button is clicked and add value to desiredNrOfCopies in state", async () => {
+        const addToCart = vi.fn();
+        const user = userEvent.setup();
+        const {rerender} = render(<BrowserRouter>
+            <Card
+                imageURL="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+                name="bulbasaur"
+                price={45}
+                nrOfCopiesInShoppingCart={0}
+                id={1}
+                addToCart={addToCart}
+            />
+        </BrowserRouter>)
+        const button = screen.getByRole("button", { name: "Add to Cart" });
+        await user.click(button);
+        expect(addToCart).toHaveBeenCalled();
+        //https://testing-library.com/docs/react-testing-library/api/#rerender should also test the component doing the prop updating
+        //but this test only checks if button disappears/input appears when props change
+        rerender(<BrowserRouter>
+            <Card
+                imageURL="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+                name="bulbasaur"
+                price={45}
+                nrOfCopiesInShoppingCart={1}
+                id={1}
+                addToCart={addToCart}
+            />
+        </BrowserRouter>)
+        const spinButton = screen.getByRole('spinbutton');
+        expect(spinButton).toHaveValue(1);
+    });
 
     it("should call the addToCart functions when '+' button is clicked and increase desiredNrOfCopiesInCart state value", async () => {
         const addToCart = vi.fn();
